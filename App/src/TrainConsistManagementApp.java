@@ -1,5 +1,5 @@
-import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TrainConsistManagementApp {
 
@@ -7,47 +7,30 @@ public class TrainConsistManagementApp {
 
         System.out.println("=== Train Consist Management App ===");
 
-        // Sorted array of bogie IDs
-        String[] bogieIds = {"BG101", "BG205", "BG309", "BG412", "BG550"};
+        // Create bogie list (empty case)
+        List<String> bogieIds = new ArrayList<>();
 
-        // (Optional safety) ensure sorted
-        Arrays.sort(bogieIds);
+        // 🔴 Defensive check before search
+        if (bogieIds.isEmpty()) {
+            throw new IllegalStateException("Cannot perform search: Train has no bogies.");
+        }
 
-        // Take input
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter Bogie ID to search: ");
-        String key = sc.nextLine();
-
-        // 🔹 Binary Search
-        int low = 0;
-        int high = bogieIds.length - 1;
+        // 🔹 (Search logic - will not run if empty)
+        String searchKey = "BG101";
         boolean found = false;
 
-        while (low <= high) {
-
-            int mid = (low + high) / 2;
-
-            int comparison = key.compareTo(bogieIds[mid]);
-
-            if (comparison == 0) {
+        for (String id : bogieIds) {
+            if (id.equals(searchKey)) {
                 found = true;
                 break;
-            }
-            else if (comparison > 0) {
-                low = mid + 1;   // search right half
-            }
-            else {
-                high = mid - 1;  // search left half
             }
         }
 
         // Display result
         if (found) {
-            System.out.println("Bogie ID found using Binary Search.");
+            System.out.println("Bogie found.");
         } else {
-            System.out.println("Bogie ID NOT found.");
+            System.out.println("Bogie not found.");
         }
-
-        sc.close();
     }
 }
