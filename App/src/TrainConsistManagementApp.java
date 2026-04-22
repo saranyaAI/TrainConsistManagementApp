@@ -5,7 +5,6 @@ public class TrainConsistManagementApp {
 
     public static void main(String[] args) {
 
- Passenger
         System.out.println("=== Train Consist Management App ===");
 
         // Create ArrayList for passenger bogies
@@ -36,18 +35,3 @@ public class TrainConsistManagementApp {
         System.out.println(passengerBogies);
     }
 }
-
-        // Welcome message
-        System.out.println("=== Train Consist Management App ===");
-
-        // Initialize empty train consist
-        List<String> trainConsist = new ArrayList<>();
-
-        // Display initial bogie count
-        System.out.println("Train consist initialized.");
-        System.out.println("Initial number of bogies: " + trainConsist.size());
-
-        // Program continues...
-    }
-}
-dev
